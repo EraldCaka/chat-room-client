@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import APIClient from "../core/application/lib/apiClient";
 import Rooms, { Room } from "../components/Rooms";
+import userIcon from "../assets/user-128.png";
 
 const HubPage = () => {
   const [roomName, setRoomName] = useState("");
@@ -98,6 +99,14 @@ const HubPage = () => {
             >
               Join Room
             </button>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src={userIcon}
+                alt="User Icon"
+                style={{ width: "20px", marginRight: "5px" }}
+              />
+              <span>{room.clientCount} </span>
+            </div>
           </div>
         ))}
       </div>

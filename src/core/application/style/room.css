@@ -34,7 +34,7 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 99%;
+  width: 95%;
   background-color: #f9f9f9;
   padding: 10px;
   display: flex;
@@ -48,6 +48,7 @@
   border-radius: 5px;
   border: 1px solid #ccc;
   resize: none;
+  margin-left: 2rem;
 }
 
 .send-button {
@@ -64,7 +65,52 @@
 .send-button:hover {
   background-color: #0056b3;
 }
+
 .personal-message {
   text-align: right;
   margin-bottom: 1rem;
+}
+.dropdown-container {
+  position: relative;
+  margin-left: 1rem;
+  margin-top: 3.3rem;
+}
+
+.dropdown-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  top: calc(100% + 5px);
+  left: 0;
+  z-index: 1000;
+  width: 150px; /* Adjust width as needed */
+}
+
+.dropdown-content p {
+  margin: 0 0 5px;
+}
+
+.dropdown-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-content li {
+  margin-bottom: 5px;
+}
+
+.dropdown-container:hover .dropdown-content {
+  display: block;
 }

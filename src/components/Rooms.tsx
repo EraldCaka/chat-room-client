@@ -3,6 +3,8 @@ import APIClient from "../core/application/lib/apiClient";
 export interface Room {
   id: string;
   name: string;
+  clientCount: number;
+  clients: string[];
 }
 
 const Rooms = {
