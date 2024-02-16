@@ -1,8 +1,8 @@
 const LoginData = () => {
   return {
-    email: "Golombardo@gmail.com",
-    password: 1234,
-  };
-};
+    email: 'Golombardo@gmail.com',
+    password: 1234
+  }
+}
 
-export default LoginData;
+export default LoginData

@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import { Navbar } from '../common/components'
 
 const ErrorPage = () => {
   return (
@@ -6,7 +6,7 @@ const ErrorPage = () => {
       <Navbar />
       <div>ErrorPage</div>
     </>
-  );
-};
+  )
+}
 
-export default ErrorPage;
+export default ErrorPage
