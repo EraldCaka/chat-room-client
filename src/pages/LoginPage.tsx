@@ -1,67 +1,58 @@
-import { useState } from "react";
+import { useState } from 'react'
 
-import "../core/application/style/login.css";
-import APIClient from "../core/application/lib/apiClient";
-import { useNavigate } from "react-router-dom";
+import '../core/application/style/login.css'
+import APIClient from '../core/application/lib/apiClient'
+import { useNavigate } from 'react-router-dom'
 
 const initialState = {
-  username: "",
-  email: "",
-  password: "",
-  isMember: true,
-};
+  username: '',
+  email: '',
+  password: '',
+  isMember: true
+}
 
 const LoginPage = () => {
-  const [values, setValues] = useState(initialState);
-  const navigate = useNavigate();
+  const [values, setValues] = useState(initialState)
+  const navigate = useNavigate()
 
   const toggleMember = () => {
-    setValues({ ...values, isMember: !values.isMember });
-  };
+    setValues({ ...values, isMember: !values.isMember })
+  }
 
   const handleChange = (e: { target: { name: string; value: string } }) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
+    setValues({ ...values, [e.target.name]: e.target.value })
+  }
 
   const onSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    const { username, email, password, isMember } = values;
+    e.preventDefault()
+    const { username, email, password, isMember } = values
     if (!email || !password || (!isMember && !username)) {
-      return;
+      return
     }
-    const userRequest = isMember
-      ? { email, password }
-      : { username, email, password };
+    const userRequest = isMember ? { email, password } : { username, email, password }
     if (isMember) {
-      const apiClient = new APIClient("/login");
-      const loginInfo = await apiClient.post(userRequest);
-      localStorage.setItem("username", loginInfo.username);
-      localStorage.setItem("userId", loginInfo.id);
-      navigate("/hub");
-      return;
+      const apiClient = new APIClient('/login')
+      const loginInfo = await apiClient.post(userRequest)
+      localStorage.setItem('username', loginInfo.username)
+      localStorage.setItem('userId', loginInfo.id)
+      navigate('/hub')
+      return
     }
-    const apiClient = new APIClient("/signup");
-    await apiClient.post(userRequest);
-    navigate("/login");
-  };
+    const apiClient = new APIClient('/signup')
+    await apiClient.post(userRequest)
+    navigate('/login')
+  }
 
-  return (
-    <LoginForm
-      values={values}
-      handleChange={handleChange}
-      onSubmit={onSubmit}
-      toggleMember={toggleMember}
-    />
-  );
-};
+  return <LoginForm values={values} handleChange={handleChange} onSubmit={onSubmit} toggleMember={toggleMember} />
+}
 
-export default LoginPage;
+export default LoginPage
 
 const LoginForm = ({ values, handleChange, onSubmit, toggleMember }) => {
   return (
     <div className="container">
       <form className="form" onSubmit={onSubmit}>
-        <h3>{values.isMember ? "Login" : "Register"}</h3>
+        <h3>{values.isMember ? 'Login' : 'Register'}</h3>
 
         {!values.isMember && (
           <div className="input-group">
@@ -102,16 +93,16 @@ const LoginForm = ({ values, handleChange, onSubmit, toggleMember }) => {
         </div>
 
         <button type="submit" className="btn btn-block">
-          {values.isMember ? "Login" : "Register"}
+          {values.isMember ? 'Login' : 'Register'}
         </button>
 
         <p>
-          {values.isMember ? "Not a member yet?" : "Already a member?"}
+          {values.isMember ? 'Not a member yet?' : 'Already a member?'}
           <button type="button" onClick={toggleMember} className="member-btn">
-            {values.isMember ? "Register" : "Login"}
+            {values.isMember ? 'Register' : 'Login'}
           </button>
         </p>
       </form>
     </div>
-  );
-};
+  )
+}
